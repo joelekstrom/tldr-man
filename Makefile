@@ -12,7 +12,7 @@ $(OUTPUT_DIR):
 	mkdir -p $(OUTPUT_DIR)
 
 $(OUTPUT_DIR)/%.1: %.md
-	@sed 's/^> //' $< > $<.tmp
+	@sed 's/^> //; s/^`/	`/' $< > $<.tmp
 	ronn -r --pipe $<.tmp > $@ 2>/dev/null
 	@rm $<.tmp
 
